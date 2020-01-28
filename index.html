@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class=''>
+
+<head>
+    <script src="@{'/public/javascripts/controllers/logins.controller.js'}" type="text/javascript" charset="UTF-8"></script>
+    <script charset="utf-8" src="@{'/public/javascripts/controllers/login.controller.js'}" type="text/javascript"></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'>
+    </script>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+    <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+    <link rel="canonical" href="https://codepen.io/dpinnick/pen/LjdLmo?limit=all&page=21&q=service" />
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/secure.css'>
+</head>
+
+<body>
+    <!-- LOGIN MODULE -->
+    <div class="login">
+        <div class="wrap">
+            <!-- SLIDER -->
+            <div class="content">
+                <!-- LOGO -->
+                <div class="logo">
+                    <img src="img/LOGO_SESAB.png" alt="">
+                </div>
+                <!-- SLIDESHOW -->
+                <div id="slideshow">
+                    <div class="one">
+                        <h2><span>MOTIVAÇÃO</span></h2>
+                        <p>As microáreas assitidas pela Estratégia de Saúde da Família são um ambiente complexo que o "sistema" (de saúde também) tem dificuldade de atender.</p>
+                    </div>
+                    <div class="two">
+                        <h2><span>DADOS</span></h2>
+                        <p>A partir dos dados coletados propor ações aos ACS e incluir automaticamente novas dados para coleta em campo, além de orientações personalizadas aos indivíduos, contribuindo para o seu autocuidado.</p>
+                    </div>
+                    <div class="three">
+                        <h2><span>PESQUISAS</span></h2>
+                        <p>Com base na solução desenvolvida propomos algumas abordagens de pesquisa para ampliar o entendimento do uso da saúde móvel e dados na Saúde da Família.</p>
+                    </div>
+                    <div class="four">
+                        <h2><span>MICRODADOS</span></h2>
+                        <p>Aprimorar a capacidade de interpretação dos dados pelo ACS para propor ações no seu território pactuadas com a equipe.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- LOGIN FORM -->
+            <div class="user">
+                <div class="form-wrap">
+                    <!-- TABS -->
+                    <div class="tabs">
+                        <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Acesso<span></a>
+                        </h3>
+                    </div>
+                    <!-- TABS CONTENT -->
+                    <div class="tabs-content">
+                        <!-- TABS CONTENT LOGIN -->
+                        <div id="login-tab-content" class="active" ng-controller="LoginController as loginCtrl">
+                            <form class="login-form" action="" method="post">
+                                <input type="text" class="input" autocomplete="off" placeholder="Usuário" id="login" maxlength="50" name="login" ng-model="loginCtrl.login.login" required />
+                                <input type="password" class="input" autocomplete="off" placeholder="Senha" id="senha" name="senha" ng-model="loginCtrl.login.pass" required />
+
+                                <input type="checkbox" class="checkbox" checked id="lembrar_de_mim">
+                                <label for="lembrar_de_mim">Lembrar de mim</label>
+                                <input type="submit" class="button" value="Login" id="btn-entrar" name="entrar" ng-click="loginCtrl.entrar()" ng-disabled="loginCtrl.submiting">
+
+                            </form>
+                            <div class="help-action">
+                                <p><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    <a id="btn-esqueci-senha" name="esqueci" data-toggle="modal" data-target="#esqueciSenha" ng-click="loginCtrl.abrirModalRecuperarSenha()">Esqueci minha senha</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="modalRecuperarSenha.html">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" ng-click="loginCtrl.fecharModalRecuperarSenha()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+            <h4 class="modal-title" id="myModalLabel">Recuperação de senha</h4>
+
+            <div class="modal-body">
+                <div class="row" style="padding: 0px 15px 0px 15px">
+                    <div class="input-group">
+                        <div class="input-group-addon">Usuário:</div>
+                        <input class="form-control input-md" placeholder="LOGIN" id="loginRecuperar" maxlength="50" name="login" ng-model="loginCtrl.usuarioRecuperar" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelar" type="button" class="btn btn-default" ng-click="loginCtrl.fecharModalRecuperarSenha()">Cancelar</button>
+                <button id="excluir" type="button" class="btn btn-primary" ng-click="loginCtrl.enviarRecuperacao($event)">Solicitar</button>
+            </div>
+        </div>
+    </script>
+
+    <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script>
+        /* LOGIN - MAIN.JS - dp 2017 */
+
+        // LOGIN TABS
+        /* $(function() {
+              var tab = $('.tabs h3 a');
+              tab.on('click', function(event) {
+                  event.preventDefault();
+                  tab.removeClass('active');
+                  $(this).addClass('active');
+                  tab_content = $(this).attr('href');
+                  $('div[id$="tab-content"]').removeClass('active');
+                  $(tab_content).addClass('active');
+              });
+          }); */
+
+        // SLIDESHOW
+        $(function() {
+            $('#slideshow > div:gt(0)').hide();
+            setInterval(function() {
+                $('#slideshow > div:first')
+                    .fadeOut(2000)
+                    .next()
+                    .fadeIn(2000)
+                    .end()
+                    .appendTo('#slideshow');
+            }, 3850);
+        });
+
+        // CUSTOM JQUERY FUNCTION FOR SWAPPING CLASSES
+        /*  (function($) {
+              'use strict';
+              $.fn.swapClass = function(remove, add) {
+                  this.removeClass(remove).addClass(add);
+                  return this;
+              };
+          }(jQuery)); */
+
+
+        // DISABLE SUBMIT FOR DEMO
+        $(function() {
+            $('.button').on('click', function(event) {
+                $(this).stop();
+                event.preventDefault();
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
